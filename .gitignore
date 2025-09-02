@@ -1,5 +1,4 @@
 # Various IDEs and Editors
-.vscode/
 .idea/
 **/*~
 
@@ -23,3 +22,5 @@ dist/
 
 # environment variables
 .env
+
+.canbench
