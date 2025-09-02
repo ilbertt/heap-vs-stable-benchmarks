@@ -1,7 +1,7 @@
 mod asset;
+mod candid;
 mod cbor;
 mod heap;
-mod stable;
 mod store;
 
 #[cfg(feature = "canbench-rs")]
@@ -12,9 +12,9 @@ mod bench {
 
     use crate::{
         asset::Asset,
-        cbor::{asset::CborAsset, stable::with_stable_cbor_state},
+        candid::{asset::CandidAsset, stable::with_candid_stable_state},
+        cbor::{asset::CborAsset, stable::with_cbor_stable_state},
         heap::with_heap_state,
-        stable::with_stable_state,
         store::Store,
     };
 
@@ -118,11 +118,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_0b() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_0b() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(ZERO_B_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(ZERO_B_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -132,11 +132,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_1kb() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_1kb() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(ONE_KB_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(ONE_KB_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -146,11 +146,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_10kb() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_10kb() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(TEN_KB_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(TEN_KB_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -160,11 +160,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_100kb() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_100kb() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(HUNDRED_KB_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(HUNDRED_KB_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -174,11 +174,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_1mb() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_1mb() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(ONE_MB_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(ONE_MB_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -188,11 +188,11 @@ mod bench {
     }
 
     #[bench(raw)]
-    fn stable_read_2mb() -> BenchResult {
-        with_stable_state(|s| {
+    fn stable_candid_read_2mb() -> BenchResult {
+        with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(TWO_MB_ASSET_CONTENT.to_vec()),
+                CandidAsset::new_with_content(TWO_MB_ASSET_CONTENT.to_vec()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -203,7 +203,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_0b() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(ZERO_B_ASSET_CONTENT.to_vec()),
@@ -217,7 +217,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_1kb() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(ONE_KB_ASSET_CONTENT.to_vec()),
@@ -231,7 +231,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_10kb() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(TEN_KB_ASSET_CONTENT.to_vec()),
@@ -245,7 +245,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_100kb() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(HUNDRED_KB_ASSET_CONTENT.to_vec()),
@@ -259,7 +259,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_1mb() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(ONE_MB_ASSET_CONTENT.to_vec()),
@@ -273,7 +273,7 @@ mod bench {
 
     #[bench(raw)]
     fn stable_cbor_read_2mb() -> BenchResult {
-        with_stable_cbor_state(|s| {
+        with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
                 CborAsset::new_with_content(TWO_MB_ASSET_CONTENT.to_vec()),

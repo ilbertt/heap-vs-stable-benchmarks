@@ -1,7 +1,4 @@
-use std::borrow::Cow;
-
-use candid::{CandidType, Decode, Deserialize, Encode};
-use ic_stable_structures::{storable::Bound, Storable};
+use candid::{CandidType, Deserialize};
 
 #[derive(Clone, CandidType, Deserialize)]
 pub struct Asset {
@@ -18,20 +15,4 @@ impl Asset {
             metadata_field: "Test data 3".to_string(),
         }
     }
-}
-
-impl Storable for Asset {
-    fn to_bytes(&self) -> Cow<'_, [u8]> {
-        Cow::Owned(Encode!(self).unwrap())
-    }
-
-    fn into_bytes(self) -> Vec<u8> {
-        Encode!(&self).unwrap()
-    }
-
-    fn from_bytes(bytes: Cow<[u8]>) -> Self {
-        Decode!(bytes.as_ref(), Self).unwrap()
-    }
-
-    const BOUND: Bound = Bound::Unbounded;
 }

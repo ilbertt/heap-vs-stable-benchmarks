@@ -9,11 +9,11 @@ const MEMORY_ID: u8 = 1;
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-pub struct StableCborState {
+pub struct CborStableState {
     assets: StableBTreeMap<String, CborAsset, Memory>,
 }
 
-impl Default for StableCborState {
+impl Default for CborStableState {
     fn default() -> Self {
         Self {
             assets: StableBTreeMap::init(
@@ -30,10 +30,10 @@ thread_local! {
         RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
 
     // Initialize a `StableBTreeMap` with `MemoryId(0)`.
-    static STABLE_STATE: RefCell<StableCborState> = RefCell::new(StableCborState::default());
+    static STABLE_STATE: RefCell<CborStableState> = RefCell::new(CborStableState::default());
 }
 
-impl Store<CborAsset> for StableCborState {
+impl Store<CborAsset> for CborStableState {
     fn get(&self, key: String) -> Option<CborAsset> {
         self.assets.get(&key)
     }
@@ -43,6 +43,6 @@ impl Store<CborAsset> for StableCborState {
     }
 }
 
-pub fn with_stable_cbor_state<T>(f: impl FnOnce(&mut StableCborState) -> T) -> T {
+pub fn with_cbor_stable_state<T>(f: impl FnOnce(&mut CborStableState) -> T) -> T {
     STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
 }
