@@ -1,17 +1,10 @@
-[package]
-name = "canister"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = ["src/struct", "src/common", "src/bytes"]
+resolver = "2"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
+[workspace.dependencies]
 candid = "0.10"
 ic-cdk = "0.18"
-ic-stable-structures = "0.7"
 
 serde = "1.0"
 serde_bytes = "0.11"
@@ -19,7 +12,6 @@ serde_cbor = "0.11"
 
 fastrand = "2.3"
 
-canbench-rs = { version = "0.2.1", optional = true }
+canbench-rs = "0.2.1"
 
-[features]
-canbench-rs = ["dep:canbench-rs"]
+common = { path = "src/common" }

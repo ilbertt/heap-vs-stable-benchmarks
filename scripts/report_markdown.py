@@ -68,35 +68,12 @@ def fmt_int(n):
   return f"{n:,}"
 
 
-def replace_results_section(readme_path: Path, table_md: str) -> None:
-  text = readme_path.read_text()
-  # Find the start of the Results section header
-  header_match = re.search(r'(?m)^##\s+Results\s*$', text)
-  if header_match:
-    start_idx = header_match.end()
-    # Find the next header start after Results
-    next_header_match = re.search(r'(?m)^##\s+[^\n]+', text[start_idx:])
-    end_idx = start_idx + next_header_match.start() if next_header_match else len(text)
-    # Replace the content between start and end with our table
-    before = text[:start_idx]
-    after = text[end_idx:]
-    # Ensure exactly one blank line after the header
-    if not before.endswith("\n"):
-      before += "\n"
-    # Collapse any extra blank lines at the start of the replaced region
-    new_text = before + "\n" + table_md + "\n" + after.lstrip("\n")
-    readme_path.write_text(new_text)
-  else:
-    # No Results section: append one at the end
-    if not text.endswith("\n"):
-      text += "\n"
-    new_text = text + "\n## Results\n\n" + table_md + "\n"
-    readme_path.write_text(new_text)
-
-
 def main():
-  results_path = Path("canbench_results.yml")
-  readme_path = Path(sys.argv[1]) if len(sys.argv) > 1 else None
+  results_path = Path(sys.argv[1])
+  readme_path = Path(sys.argv[2]) if len(sys.argv) > 2 else None
+  if not results_path:
+    print("Usage: report_markdown.py <results_path> [readme_path]", file=sys.stderr)
+    sys.exit(1)
   if not results_path.exists():
     print(f"File not found: {results_path}", file=sys.stderr)
     sys.exit(1)
@@ -137,7 +114,7 @@ def main():
 
   # Write into README Results section
   if readme_path and readme_path.exists():
-    replace_results_section(readme_path, table_md)
+    readme_path.write_text(table_md)
 
   # Also print to stdout for convenience
   print(table_md)

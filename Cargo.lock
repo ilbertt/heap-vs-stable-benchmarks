@@ -117,20 +117,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "canister"
-version = "0.1.0"
-dependencies = [
- "canbench-rs",
- "candid",
- "fastrand",
- "ic-cdk",
- "ic-stable-structures",
- "serde",
- "serde_bytes",
- "serde_cbor",
-]
-
-[[package]]
 name = "cc"
 version = "1.2.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -145,6 +131,13 @@ name = "cfg-if"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2fd1289c04a9ea8cb22300a459a72a385d7c73d3259e2ed7dcb2af674838cfa9"
+
+[[package]]
+name = "common"
+version = "0.1.0"
+dependencies = [
+ "fastrand",
+]
 
 [[package]]
 name = "cpufeatures"
@@ -554,6 +547,20 @@ name = "strsim"
 version = "0.11.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7da8b5736845d9f2fcb837ea5d9e2628564b3b043a70948a3f0b778838c5fb4f"
+
+[[package]]
+name = "struct"
+version = "0.1.0"
+dependencies = [
+ "canbench-rs",
+ "candid",
+ "common",
+ "ic-cdk",
+ "ic-stable-structures",
+ "serde",
+ "serde_bytes",
+ "serde_cbor",
+]
 
 [[package]]
 name = "strum"

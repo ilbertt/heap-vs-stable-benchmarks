@@ -1,6 +1,5 @@
 mod asset;
 mod heap;
-mod rand;
 mod stable;
 mod store;
 
@@ -10,10 +9,11 @@ mod bench {
 
     use canbench_rs::{bench, BenchResult};
 
+    use common::rand::random_bytes;
+
     use crate::{
         asset::Asset,
         heap::state::with_heap_state,
-        rand::random_bytes,
         stable::{
             candid::{asset::CandidAsset, state::with_candid_stable_state},
             cbor::{asset::CborAsset, state::with_cbor_stable_state},
