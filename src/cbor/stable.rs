@@ -2,18 +2,18 @@ use ic_stable_structures::memory_manager::{MemoryId, MemoryManager, VirtualMemor
 use ic_stable_structures::{DefaultMemoryImpl, StableBTreeMap};
 use std::cell::RefCell;
 
-use crate::asset::Asset;
+use crate::cbor::asset::CborAsset;
 use crate::store::Store;
 
-const MEMORY_ID: u8 = 0;
+const MEMORY_ID: u8 = 1;
 
 type Memory = VirtualMemory<DefaultMemoryImpl>;
 
-pub struct StableState {
-    assets: StableBTreeMap<String, Asset, Memory>,
+pub struct StableCborState {
+    assets: StableBTreeMap<String, CborAsset, Memory>,
 }
 
-impl Default for StableState {
+impl Default for StableCborState {
     fn default() -> Self {
         Self {
             assets: StableBTreeMap::init(
@@ -30,19 +30,19 @@ thread_local! {
         RefCell::new(MemoryManager::init(DefaultMemoryImpl::default()));
 
     // Initialize a `StableBTreeMap` with `MemoryId(0)`.
-    static STABLE_STATE: RefCell<StableState> = RefCell::new(StableState::default());
+    static STABLE_STATE: RefCell<StableCborState> = RefCell::new(StableCborState::default());
 }
 
-impl Store<Asset> for StableState {
-    fn get(&self, key: String) -> Option<Asset> {
+impl Store<CborAsset> for StableCborState {
+    fn get(&self, key: String) -> Option<CborAsset> {
         self.assets.get(&key)
     }
 
-    fn set(&mut self, key: String, asset: Asset) {
+    fn set(&mut self, key: String, asset: CborAsset) {
         self.assets.insert(key, asset);
     }
 }
 
-pub fn with_stable_state<T>(f: impl FnOnce(&mut StableState) -> T) -> T {
+pub fn with_stable_cbor_state<T>(f: impl FnOnce(&mut StableCborState) -> T) -> T {
     STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
 }

@@ -41,6 +41,48 @@ benches:
       heap_increase: 33
       stable_memory_increase: 0
     scopes: {}
+  stable_cbor_read_0b:
+    total:
+      calls: 1
+      instructions: 10575
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_cbor_read_100kb:
+    total:
+      calls: 1
+      instructions: 9988010
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_cbor_read_10kb:
+    total:
+      calls: 1
+      instructions: 1009436
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_cbor_read_1kb:
+    total:
+      calls: 1
+      instructions: 111190
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_cbor_read_1mb:
+    total:
+      calls: 1
+      instructions: 102158558
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_cbor_read_2mb:
+    total:
+      calls: 1
+      instructions: 204303580
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
   stable_read_0b:
     total:
       calls: 1

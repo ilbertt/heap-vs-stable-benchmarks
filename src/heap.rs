@@ -11,7 +11,7 @@ thread_local! {
     static HEAP_STATE: RefCell<HeapState> = RefCell::new(HeapState::default());
 }
 
-impl Store for HeapState {
+impl Store<Asset> for HeapState {
     fn get(&self, key: String) -> Option<Asset> {
         self.assets.get(&key).cloned()
     }
