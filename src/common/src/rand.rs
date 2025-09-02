@@ -12,17 +12,9 @@ fn create_rng() -> RefCell<Rng> {
     RefCell::new(rng)
 }
 
+/// Use this only inside canister runtime.
 fn get_seed() -> u64 {
-    #[cfg(target_family = "wasm")]
-    {
-        ic_cdk::api::time()
-    }
-
-    // fallback seed for non-wasm targets, e.g. unit tests
-    #[cfg(not(target_family = "wasm"))]
-    {
-        0
-    }
+    ic_cdk::api::time()
 }
 
 fn with_rng<T>(cb: impl FnOnce(&mut Rng) -> T) -> T {
