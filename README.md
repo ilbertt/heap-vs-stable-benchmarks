@@ -17,13 +17,21 @@ cargo install canbench
 ## Running the Benchmarks
 
 ```bash
+cd <case of your choice>
 canbench
+# e.g.
+# cd src/struct
+# canbench
 ```
 
 ## Updating the Results
 
 ```bash
+cd <case of your choice>
 canbench --persist
+# e.g.
+# cd src/struct
+# canbench --persist
 ```
 
 If you want to print a markdown table of the results, you can run the following command (assuming you have `python3` installed):

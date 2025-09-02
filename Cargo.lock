@@ -59,6 +59,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1fd0f2584146f6f2ef48085050886acf353beff7305ebd1ae69500e27c67f64b"
 
 [[package]]
+name = "bytes"
+version = "0.1.0"
+
+[[package]]
 name = "canbench-rs"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -137,6 +141,7 @@ name = "common"
 version = "0.1.0"
 dependencies = [
  "fastrand",
+ "ic-cdk",
 ]
 
 [[package]]

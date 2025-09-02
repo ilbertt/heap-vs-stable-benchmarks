@@ -2,84 +2,84 @@ benches:
   heap_read_0b:
     total:
       calls: 1
-      instructions: 2830
+      instructions: 2835
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_100kb:
     total:
       calls: 1
-      instructions: 106317
+      instructions: 106322
       heap_increase: 2
       stable_memory_increase: 0
     scopes: {}
   heap_read_10kb:
     total:
       calls: 1
-      instructions: 13683
+      instructions: 13688
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_1kb:
     total:
       calls: 1
-      instructions: 4467
+      instructions: 4472
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_1mb:
     total:
       calls: 1
-      instructions: 1052493
+      instructions: 1052498
       heap_increase: 17
       stable_memory_increase: 0
     scopes: {}
   heap_read_2mb:
     total:
       calls: 1
-      instructions: 2101123
+      instructions: 2101128
       heap_increase: 33
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_0b:
     total:
       calls: 1
-      instructions: 72629
+      instructions: 72577
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_100kb:
     total:
       calls: 1
-      instructions: 323685
+      instructions: 323960
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_10kb:
     total:
       calls: 1
-      instructions: 100408
+      instructions: 100401
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_1kb:
     total:
       calls: 1
-      instructions: 76161
+      instructions: 76121
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_1mb:
     total:
       calls: 1
-      instructions: 2607609
+      instructions: 2610698
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_2mb:
     total:
       calls: 1
-      instructions: 5137730
+      instructions: 5143927
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
@@ -93,35 +93,35 @@ benches:
   stable_cbor_read_100kb:
     total:
       calls: 1
-      instructions: 260120
+      instructions: 260447
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_cbor_read_10kb:
     total:
       calls: 1
-      instructions: 36746
+      instructions: 36791
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_cbor_read_1kb:
     total:
       calls: 1
-      instructions: 14020
+      instructions: 14032
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_cbor_read_1mb:
     total:
       calls: 1
-      instructions: 2543948
+      instructions: 2547089
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_cbor_read_2mb:
     total:
       calls: 1
-      instructions: 5073996
+      instructions: 5080245
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
