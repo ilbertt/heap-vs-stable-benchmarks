@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct CborAsset {
+    #[serde(with = "serde_bytes")]
     pub content: Vec<u8>,
     pub metadata_vec: Vec<String>,
     pub metadata_field: String,

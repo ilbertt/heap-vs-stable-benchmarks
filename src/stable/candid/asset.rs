@@ -5,6 +5,7 @@ use ic_stable_structures::{storable::Bound, Storable};
 
 #[derive(Clone, CandidType, Deserialize)]
 pub struct CandidAsset {
+    #[serde(with = "serde_bytes")]
     pub content: Vec<u8>,
     pub metadata_vec: Vec<String>,
     pub metadata_field: String,

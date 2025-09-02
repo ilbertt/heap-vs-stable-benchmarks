@@ -14,7 +14,10 @@ ic-cdk = "0.18"
 ic-stable-structures = "0.7"
 
 serde = "1.0"
+serde_bytes = "0.11"
 serde_cbor = "0.11"
+
+fastrand = "2.3"
 
 canbench-rs = { version = "0.2.1", optional = true }
 
