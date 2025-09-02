@@ -1,7 +1,6 @@
 mod asset;
 mod heap;
 mod stable;
-mod store;
 
 #[cfg(feature = "canbench-rs")]
 mod bench {
@@ -12,6 +11,7 @@ mod bench {
     use common::bytes::{
         random_100kb, random_10kb, random_1kb, random_1mb, random_2mb, zero_bytes,
     };
+    use common::store::Store;
 
     use crate::{
         asset::Asset,
@@ -20,7 +20,6 @@ mod bench {
             candid::{asset::CandidAsset, state::with_candid_stable_state},
             cbor::{asset::CborAsset, state::with_cbor_stable_state},
         },
-        store::Store,
     };
 
     const ASSET_TEST_KEY: &str = "test";

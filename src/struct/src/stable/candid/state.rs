@@ -1,9 +1,10 @@
 use ic_stable_structures::StableBTreeMap;
 use std::cell::RefCell;
 
+use common::store::Store;
+
 use crate::stable::candid::asset::CandidAsset;
 use crate::stable::memory_manager::{get_candid_memory, Memory};
-use crate::store::Store;
 
 pub struct CandidStableState {
     assets: StableBTreeMap<String, CandidAsset, Memory>,

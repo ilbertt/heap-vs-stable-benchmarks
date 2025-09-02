@@ -1,6 +1,8 @@
 use std::{cell::RefCell, collections::BTreeMap};
 
-use crate::{asset::Asset, store::Store};
+use common::store::Store;
+
+use crate::asset::Asset;
 
 #[derive(Default)]
 pub struct HeapState {

@@ -1,9 +1,10 @@
 use ic_stable_structures::StableBTreeMap;
 use std::cell::RefCell;
 
+use common::store::Store;
+
 use crate::stable::cbor::asset::CborAsset;
 use crate::stable::memory_manager::{get_cbor_memory, Memory};
-use crate::store::Store;
 
 pub struct CborStableState {
     assets: StableBTreeMap<String, CborAsset, Memory>,
