@@ -84,7 +84,7 @@ def main():
   )
 
   lines = []
-  lines.append("Wasm instructions used for each asset size:\n")
+  lines.append("Wasm instructions used for each bytes array size:\n")
   lines.append("| Size | Heap | Stable | Stable/Heap |")
   lines.append("|------|-----:|------:|------------:|")
 

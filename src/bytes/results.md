@@ -1,4 +1,4 @@
-Wasm instructions used for each asset size:
+Wasm instructions used for each bytes array size:
 
 | Size | Heap | Stable | Stable/Heap |
 |------|-----:|------:|------------:|
