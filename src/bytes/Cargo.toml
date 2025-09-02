@@ -7,3 +7,12 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
+candid = { workspace = true }
+ic-cdk = { workspace = true }
+
+common = { workspace = true }
+
+canbench-rs = { workspace = true, optional = true }
+
+[features]
+canbench-rs = ["dep:canbench-rs"]

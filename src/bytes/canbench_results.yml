@@ -1,0 +1,86 @@
+benches:
+  heap_read_0b:
+    total:
+      calls: 1
+      instructions: 694
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  heap_read_100kb:
+    total:
+      calls: 1
+      instructions: 103546
+      heap_increase: 2
+      stable_memory_increase: 0
+    scopes: {}
+  heap_read_10kb:
+    total:
+      calls: 1
+      instructions: 10912
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  heap_read_1kb:
+    total:
+      calls: 1
+      instructions: 1696
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  heap_read_1mb:
+    total:
+      calls: 1
+      instructions: 1049722
+      heap_increase: 17
+      stable_memory_increase: 0
+    scopes: {}
+  heap_read_2mb:
+    total:
+      calls: 1
+      instructions: 2098352
+      heap_increase: 33
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_0b:
+    total:
+      calls: 1
+      instructions: 855
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_100kb:
+    total:
+      calls: 1
+      instructions: 205632
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_10kb:
+    total:
+      calls: 1
+      instructions: 21312
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_1kb:
+    total:
+      calls: 1
+      instructions: 2880
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_1mb:
+    total:
+      calls: 1
+      instructions: 2097984
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+  stable_read_2mb:
+    total:
+      calls: 1
+      instructions: 4195136
+      heap_increase: 0
+      stable_memory_increase: 0
+    scopes: {}
+version: 0.2.0

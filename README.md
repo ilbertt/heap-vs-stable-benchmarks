@@ -4,6 +4,7 @@ This repository contains benchmarks for the Heap and Stable memory of a Canister
 
 ## Results
 
+- [Heap vs Stable for Bytes](./src/bytes/results.md)
 - [Heap vs Stable for Structs in BTreeMap](./src/struct/results.md)
 
 ## Prerequisites
@@ -37,15 +38,19 @@ canbench --persist
 If you want to print a markdown table of the results, you can run the following command (assuming you have `python3` installed):
 
 ```bash
-./scripts/report_markdown.py <canbench_results path>
+cd <case of your choice>
+./scripts/report_markdown.py
 # e.g.
-# ./scripts/report_markdown.py ./src/struct/canbench_results.yml
+# cd src/struct
+# ./scripts/report_markdown.py
 ```
 
 Additionally, if you want to update the results in the folder of your choice, you can run the following command:
 
 ```bash
-./scripts/report_markdown.py <canbench_results path> <markdown file path>
+cd <case of your choice>
+./scripts/report_markdown.py <markdown file path>
 # e.g.
-# ./scripts/report_markdown.py ./src/struct/canbench_results.yml ./src/struct/results.md
+# cd src/struct
+# ./scripts/report_markdown.py ./src/struct/results.md
 ```
