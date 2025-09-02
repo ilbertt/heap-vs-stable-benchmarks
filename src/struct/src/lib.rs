@@ -9,7 +9,9 @@ mod bench {
 
     use canbench_rs::{bench, BenchResult};
 
-    use common::rand::random_bytes;
+    use common::bytes::{
+        random_100kb, random_10kb, random_1kb, random_1mb, random_2mb, zero_bytes,
+    };
 
     use crate::{
         asset::Asset,
@@ -23,18 +25,12 @@ mod bench {
 
     const ASSET_TEST_KEY: &str = "test";
 
-    const ONE_KB: usize = 1024;
-    const TEN_KB: usize = 10 * ONE_KB;
-    const HUNDRED_KB: usize = 100 * ONE_KB;
-    const ONE_MB: usize = ONE_KB * ONE_KB;
-    const TWO_MB: usize = 2 * ONE_KB * ONE_KB;
-
     #[bench(raw)]
     fn heap_read_0b() -> BenchResult {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(0)),
+                Asset::new_with_content(zero_bytes()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -48,7 +44,7 @@ mod bench {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(ONE_KB)),
+                Asset::new_with_content(random_1kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -62,7 +58,7 @@ mod bench {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(TEN_KB)),
+                Asset::new_with_content(random_10kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -76,7 +72,7 @@ mod bench {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(HUNDRED_KB)),
+                Asset::new_with_content(random_100kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -90,7 +86,7 @@ mod bench {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(ONE_MB)),
+                Asset::new_with_content(random_1mb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -104,7 +100,7 @@ mod bench {
         with_heap_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                Asset::new_with_content(random_bytes(TWO_MB)),
+                Asset::new_with_content(random_2mb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -118,7 +114,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(0)),
+                CandidAsset::new_with_content(zero_bytes()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -132,7 +128,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(ONE_KB)),
+                CandidAsset::new_with_content(random_1kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -146,7 +142,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(TEN_KB)),
+                CandidAsset::new_with_content(random_10kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -160,7 +156,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(HUNDRED_KB)),
+                CandidAsset::new_with_content(random_100kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -174,7 +170,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(ONE_MB)),
+                CandidAsset::new_with_content(random_1mb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -188,7 +184,7 @@ mod bench {
         with_candid_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CandidAsset::new_with_content(random_bytes(TWO_MB)),
+                CandidAsset::new_with_content(random_2mb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -202,7 +198,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(0)),
+                CborAsset::new_with_content(zero_bytes()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -216,7 +212,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(ONE_KB)),
+                CborAsset::new_with_content(random_1kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -230,7 +226,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(TEN_KB)),
+                CborAsset::new_with_content(random_10kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -244,7 +240,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(HUNDRED_KB)),
+                CborAsset::new_with_content(random_100kb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -258,7 +254,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(ONE_MB)),
+                CborAsset::new_with_content(random_1mb()),
             );
 
             canbench_rs::bench_fn(|| {
@@ -272,7 +268,7 @@ mod bench {
         with_cbor_stable_state(|s| {
             s.set(
                 ASSET_TEST_KEY.to_string(),
-                CborAsset::new_with_content(random_bytes(TWO_MB)),
+                CborAsset::new_with_content(random_2mb()),
             );
 
             canbench_rs::bench_fn(|| {

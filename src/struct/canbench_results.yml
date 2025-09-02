@@ -2,7 +2,7 @@ benches:
   heap_read_0b:
     total:
       calls: 1
-      instructions: 2835
+      instructions: 3280
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
@@ -44,7 +44,7 @@ benches:
   stable_candid_read_0b:
     total:
       calls: 1
-      instructions: 72577
+      instructions: 73183
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
@@ -86,7 +86,7 @@ benches:
   stable_cbor_read_0b:
     total:
       calls: 1
-      instructions: 10562
+      instructions: 10956
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
