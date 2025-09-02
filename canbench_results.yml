@@ -2,84 +2,84 @@ benches:
   heap_read_0b:
     total:
       calls: 1
-      instructions: 2830
+      instructions: 2835
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_100kb:
     total:
       calls: 1
-      instructions: 106317
+      instructions: 106322
       heap_increase: 2
       stable_memory_increase: 0
     scopes: {}
   heap_read_10kb:
     total:
       calls: 1
-      instructions: 13683
+      instructions: 13688
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_1kb:
     total:
       calls: 1
-      instructions: 4467
+      instructions: 4472
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   heap_read_1mb:
     total:
       calls: 1
-      instructions: 1052493
+      instructions: 1052498
       heap_increase: 17
       stable_memory_increase: 0
     scopes: {}
   heap_read_2mb:
     total:
       calls: 1
-      instructions: 2101123
+      instructions: 2101128
       heap_increase: 33
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_0b:
     total:
       calls: 1
-      instructions: 71496
+      instructions: 71776
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_100kb:
     total:
       calls: 1
-      instructions: 43535302
+      instructions: 43535582
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_10kb:
     total:
       calls: 1
-      instructions: 4420505
+      instructions: 4420785
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_1kb:
     total:
       calls: 1
-      instructions: 507106
+      instructions: 507386
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_1mb:
     total:
       calls: 1
-      instructions: 445105498
+      instructions: 445105778
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_candid_read_2mb:
     total:
       calls: 1
-      instructions: 891183857
+      instructions: 891184137
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
