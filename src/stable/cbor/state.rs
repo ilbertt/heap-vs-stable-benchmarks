@@ -18,7 +18,7 @@ impl Default for CborStableState {
 }
 
 thread_local! {
-    static STABLE_STATE: RefCell<CborStableState> = RefCell::new(CborStableState::default());
+    static CBOR_STABLE_STATE: RefCell<CborStableState> = RefCell::new(CborStableState::default());
 }
 
 impl Store<CborAsset> for CborStableState {
@@ -32,5 +32,5 @@ impl Store<CborAsset> for CborStableState {
 }
 
 pub fn with_cbor_stable_state<T>(f: impl FnOnce(&mut CborStableState) -> T) -> T {
-    STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
+    CBOR_STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
 }

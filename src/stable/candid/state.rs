@@ -18,7 +18,7 @@ impl Default for CandidStableState {
 }
 
 thread_local! {
-    static STABLE_STATE: RefCell<CandidStableState> = RefCell::new(CandidStableState::default());
+    static CANDID_STABLE_STATE: RefCell<CandidStableState> = RefCell::new(CandidStableState::default());
 }
 
 impl Store<CandidAsset> for CandidStableState {
@@ -32,5 +32,5 @@ impl Store<CandidAsset> for CandidStableState {
 }
 
 pub fn with_candid_stable_state<T>(f: impl FnOnce(&mut CandidStableState) -> T) -> T {
-    STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
+    CANDID_STABLE_STATE.with(|state| f(&mut state.borrow_mut()))
 }

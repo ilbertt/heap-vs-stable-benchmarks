@@ -11,9 +11,9 @@ mod bench {
 
     use crate::{
         asset::Asset,
-        heap::with_heap_state,
-        stable::candid::{asset::CandidAsset, stable::with_candid_stable_state},
-        stable::cbor::{asset::CborAsset, stable::with_cbor_stable_state},
+        heap::state::with_heap_state,
+        stable::candid::{asset::CandidAsset, state::with_candid_stable_state},
+        stable::cbor::{asset::CborAsset, state::with_cbor_stable_state},
         store::Store,
     };
 
