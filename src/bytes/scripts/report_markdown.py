@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import re
 import sys
 from pathlib import Path
@@ -50,17 +51,15 @@ def human_size(size: str) -> str:
 
 def collect(results):
   benches = results.get("benches", {})
-  buckets = {"heap": {}, "stable_cbor": {}, "stable_candid": {}}
+  buckets = {"heap": {}, "stable": {}}
   for name, node in benches.items():
     instr = node.get("instructions")
     if instr is None:
       continue
     if name.startswith("heap_read_"):
       buckets["heap"][name[len("heap_read_"):]] = instr
-    elif name.startswith("stable_cbor_read_"):
-      buckets["stable_cbor"][name[len("stable_cbor_read_"):]] = instr
-    elif name.startswith("stable_candid_read_"):
-      buckets["stable_candid"][name[len("stable_candid_read_"):]] = instr
+    elif name.startswith("stable_read_"):
+      buckets["stable"][name[len("stable_read_"):]] = instr
   return buckets
 
 
@@ -69,14 +68,12 @@ def fmt_int(n):
 
 
 def main():
-  results_path = Path(sys.argv[1])
-  readme_path = Path(sys.argv[2]) if len(sys.argv) > 2 else None
-  if not results_path:
-    print("Usage: report_markdown.py <results_path> [readme_path]", file=sys.stderr)
-    sys.exit(1)
+  results_path = Path("./canbench_results.yml")
+  output_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("./results.md")
   if not results_path.exists():
     print(f"File not found: {results_path}", file=sys.stderr)
     sys.exit(1)
+
   results_text = results_path.read_text()
   results = parse_yaml(results_text)
   data = collect(results)
@@ -87,22 +84,19 @@ def main():
   )
 
   lines = []
-  lines.append("| Size | Heap | Stable CBOR | Stable Candid | CBOR/Heap | Candid/Heap |")
-  lines.append("|------|-----:|------------:|--------------:|----------:|------------:|")
+  lines.append("Wasm instructions used for each asset size:\n")
+  lines.append("| Size | Heap | Stable | Stable/Heap |")
+  lines.append("|------|-----:|------:|------------:|")
 
   for sz in sizes:
     h = data["heap"].get(sz)
-    c = data["stable_cbor"].get(sz)
-    a = data["stable_candid"].get(sz)
-    rc = (c / h) if (h and c) else None
-    rca = (a / h) if (h and a) else None
-    lines.append("| {} | {} | {} | {} | {} | {} |".format(
+    s = data["stable"].get(sz)
+    rs = (s / h) if (h and s) else None
+    lines.append("| {} | {} | {} | {} |".format(
       human_size(sz),
       fmt_int(h) if h is not None else "-",
-      fmt_int(c) if c is not None else "-",
-      fmt_int(a) if a is not None else "-",
-      f"{rc:.1f}x" if rc else "-",
-      f"{rca:.1f}x" if rca else "-",
+      fmt_int(s) if s is not None else "-",
+      f"{rs:.1f}x" if rs else "-",
     ))
 
   lines.append("")
@@ -110,11 +104,9 @@ def main():
   lines.append("")
 
   table_md = "\n".join(lines)
-  table_md = f"Wasm instructions used for each asset size:\n\n{table_md}"
 
-  # Write into README Results section
-  if readme_path and readme_path.exists():
-    readme_path.write_text(table_md)
+  # Write into results.md (or provided path)
+  output_path.write_text(table_md)
 
   # Also print to stdout for convenience
   print(table_md)
@@ -122,5 +114,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
-

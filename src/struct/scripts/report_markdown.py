@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 import re
 import sys
 from pathlib import Path
@@ -119,5 +120,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
-
