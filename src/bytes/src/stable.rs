@@ -1,7 +1,4 @@
-use std::{
-    cell::RefCell,
-    io::{Read, Write},
-};
+use std::{cell::RefCell, io::Write};
 
 use crate::store::Store;
 
@@ -16,10 +13,14 @@ thread_local! {
 
 impl Store<Vec<u8>> for StableState {
     fn get(&self) -> Vec<u8> {
-        let mut bytes = vec![0u8; self.bytes_size];
-        let mut reader = ic_cdk::stable::StableReader::default();
-        reader.read_exact(&mut bytes).unwrap();
-        bytes
+        let size = self.bytes_size;
+        let mut vec = Vec::with_capacity(size);
+        ic0::stable64_read_uninit(&mut vec.spare_capacity_mut()[..size], 0);
+        // SAFETY: ic0::stable64_read writes to all of `vec[0..size]`, so `set_len` is safe to call with the new size.
+        unsafe {
+            vec.set_len(size);
+        }
+        vec
     }
 
     fn set(&mut self, bytes: Vec<u8>) {

@@ -44,42 +44,42 @@ benches:
   stable_read_0b:
     total:
       calls: 1
-      instructions: 855
+      instructions: 614
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_read_100kb:
     total:
       calls: 1
-      instructions: 205632
+      instructions: 102992
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_read_10kb:
     total:
       calls: 1
-      instructions: 21312
+      instructions: 10832
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_read_1kb:
     total:
       calls: 1
-      instructions: 2880
+      instructions: 1616
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_read_1mb:
     total:
       calls: 1
-      instructions: 2097984
+      instructions: 1049168
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}
   stable_read_2mb:
     total:
       calls: 1
-      instructions: 4195136
+      instructions: 2097744
       heap_increase: 0
       stable_memory_increase: 0
     scopes: {}

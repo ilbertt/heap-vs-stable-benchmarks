@@ -66,6 +66,7 @@ dependencies = [
  "candid",
  "common",
  "ic-cdk",
+ "ic0",
 ]
 
 [[package]]
