@@ -1,6 +1,5 @@
-use candid::{CandidType, Deserialize};
-
-#[derive(Clone, CandidType, Deserialize)]
+#[allow(dead_code)]
+#[derive(Clone)]
 pub struct Asset {
     pub content: Vec<u8>,
     pub metadata_vec: Vec<String>,
