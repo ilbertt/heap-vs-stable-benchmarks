@@ -1,7 +1,6 @@
 mod asset;
-mod candid;
-mod cbor;
 mod heap;
+mod stable;
 mod store;
 
 #[cfg(feature = "canbench-rs")]
@@ -12,9 +11,9 @@ mod bench {
 
     use crate::{
         asset::Asset,
-        candid::{asset::CandidAsset, stable::with_candid_stable_state},
-        cbor::{asset::CborAsset, stable::with_cbor_stable_state},
         heap::with_heap_state,
+        stable::candid::{asset::CandidAsset, stable::with_candid_stable_state},
+        stable::cbor::{asset::CborAsset, stable::with_cbor_stable_state},
         store::Store,
     };
 
